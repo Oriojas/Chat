@@ -1,3 +1,6 @@
+Este programa se modificó para intentar recibir un dato cuendo se envie un caracter a un dispositivo bluetooth conectad oa un arduino mini codigo ariginal:https://github.com/don/BluetoothSerial
+
+
 ## Bluetooth Serial Chat Example
 
 This example program demonstrates using the Bluetooth Serial Cordova plugin for communications between a iOS or Android phone and an Arduino.  It is not very useful for chat, but it demonstrates sending data to and receiving data from the Arduino.  This should help you integrate Bluetooth Serial into your PhoneGap projects.
