@@ -1,4 +1,4 @@
-Este programa se modificó para intentar recibir un dato cuendo se envie un caracter a un dispositivo bluetooth conectad oa un arduino mini codigo ariginal:https://github.com/don/BluetoothSerial
+Este programa se modificó para intentar recibir un dato cuando se envie un caracter a un dispositivo bluetooth conectado a un arduino mini codigo original:https://github.com/don/BluetoothSerial
 
 
 ## Bluetooth Serial Chat Example
