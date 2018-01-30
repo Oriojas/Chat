@@ -124,7 +124,7 @@ var app = {
         var data = messageInput.value;
         bluetoothSerial.write(data, success, failure);
     },
-	readData: function(event){
+	readData: function(readD){
 		var success = function() {
             console.log("success");
             readDiv.innerHTML = readDiv.innerHTML + "CO: " + messageOutPut.value + "<br/>";
@@ -133,8 +133,8 @@ var app = {
 		var failure = function() {
             alert("Failed writing data to Bluetooth peripheral");
         };
-		var readData = messageOutPut.value;
-		bluetoothSerial.read(readData,failure);
+		var readD = messageOutPut.value;
+		bluetoothSerial.read(readD,failure);
 	},
 
     disconnect: function(event) {
