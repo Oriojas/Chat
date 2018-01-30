@@ -34,8 +34,6 @@ var app = {
         sendButton.addEventListener(TOUCH_START, this.sendData, false);
         disconnectButton.addEventListener(TOUCH_START, this.disconnect, false);
         deviceList.addEventListener('touchstart', this.connect, false);
-		readDiv.addEventListener(TOUCH_START, this.readData, false); /* Esta es el ecargado de recibir los datos de Limpio*/
-
     },
     onDeviceReady: function() {
         app.refreshDeviceList();
@@ -90,7 +88,7 @@ var app = {
     },
     connect: function(e) {
         var onConnect = function() {
-                // suscribirse para recibir datos
+                // subscribe for incoming data
                 bluetoothSerial.subscribe('\n', app.onData, app.onError);
 
                 resultDiv.innerHTML = "";
@@ -99,7 +97,7 @@ var app = {
             };
 
         var deviceId = e.target.dataset.deviceId;
-        if (!deviceId) { // prueba el padre
+        if (!deviceId) { // try the parent
             deviceId = e.target.parentNode.dataset.deviceId;
         }
 
@@ -118,7 +116,6 @@ var app = {
             resultDiv.scrollTop = resultDiv.scrollHeight;
         };
 
-
         var failure = function() {
             alert("Failed writing data to Bluetooth peripheral");
         };
@@ -126,22 +123,6 @@ var app = {
         var data = messageInput.value;
         bluetoothSerial.write(data, success, failure);
     },
-	readData: function(event){ // Leé los datos de Limpio
-
-		var Read = function(){
-			console.log("Read");
-			readDiv.innerHTML = readDiv.innerHTML + "CO: " + messageOutput.value + "<br/>";
-            readDiv.scrollTop = readDiv.scrollHeight;
-		};
-
-		var failureR = function() {
-            alert("Failed read data to Bluetooth peripheral");
-        };
-
-		var messageOutput.value = dataR;
-        bluetoothSerial.read(dataR, failureR);
-
-	},
     disconnect: function(event) {
         bluetoothSerial.disconnect(app.showMainPage, app.onError);
     },
