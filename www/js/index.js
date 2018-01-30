@@ -34,7 +34,7 @@ var app = {
         sendButton.addEventListener(TOUCH_START, this.sendData, false);
         disconnectButton.addEventListener(TOUCH_START, this.disconnect, false);
         deviceList.addEventListener('touchstart', this.connect, false);
-		/*readDiv.addEventListener(TOUCH_START, this.readData, false); /* Esta es el ecargado de recibir los datos de Limpio*/
+		readDiv.addEventListener(TOUCH_START, this.readData, false); /* Esta es el ecargado de recibir los datos de Limpio*/
 
     },
     onDeviceReady: function() {
@@ -93,7 +93,7 @@ var app = {
                 // suscribirse para recibir datos
                 bluetoothSerial.subscribe('\n', app.onData, app.onError);
 
-                readDiv.innerHTML = "";
+                resultDiv.innerHTML = "";
                 app.setStatus("Connected");
                 app.showDetailPage();
             };
@@ -107,8 +107,8 @@ var app = {
     },
     onData: function(data) { // data received from Arduino
         console.log(data);
-        readDiv.innerHTML = readDiv.innerHTML + "Received: " + data + "<br/>";
-        readDiv.scrollTop = readDiv.scrollHeight;
+        resultDiv.innerHTML = resultDiv.innerHTML + "Received: " + data + "<br/>";
+        resultDiv.scrollTop = resultDiv.scrollHeight;
     },
     sendData: function(event) { // send data to Arduino
 
@@ -126,7 +126,7 @@ var app = {
         var data = messageInput.value;
         bluetoothSerial.write(data, success, failure);
     },
-	/*readData: function(event){ // Leé los datos de Limpio
+	readData: function(event){ // Leé los datos de Limpio
 
 		var Read = function(){
 			console.log("Read");
@@ -138,10 +138,10 @@ var app = {
             alert("Failed read data to Bluetooth peripheral");
         };
 
-		var dataR = messageOutput.value;
+		var messageOutput.value = dataR;
         bluetoothSerial.read(dataR, failureR);
 
-	},*/
+	},
     disconnect: function(event) {
         bluetoothSerial.disconnect(app.showMainPage, app.onError);
     },
@@ -169,4 +169,3 @@ var app = {
         alert("ERROR: " + reason); // real apps should use notification.alert
     }
 };
-
