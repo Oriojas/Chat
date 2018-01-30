@@ -105,8 +105,8 @@ var app = {
     },
     onData: function(data) { // data received from Arduino
         console.log(data);
-        resultDiv.innerHTML = resultDiv.innerHTML + "Received: " + data + "<br/>";
-        resultDiv.scrollTop = resultDiv.scrollHeight;
+        readDiv.innerHTML = readDiv.innerHTML + "Received: " + data + "<br/>";
+        readDiv.scrollTop = readDiv.scrollHeight;
     },
     sendData: function(event) { // send data to Arduino
 
