@@ -139,7 +139,7 @@ var app = {
         };
 
 		var dataR = messageOutput.value;
-        bluetoothSerial.read(dataR, Read, failureR);
+        bluetoothSerial.read(dataR, failureR);
 
 	},
     disconnect: function(event) {
@@ -169,3 +169,4 @@ var app = {
         alert("ERROR: " + reason); // real apps should use notification.alert
     }
 };
+
