@@ -34,6 +34,7 @@ var app = {
         sendButton.addEventListener(TOUCH_START, this.sendData, false);
         disconnectButton.addEventListener(TOUCH_START, this.disconnect, false);
         deviceList.addEventListener('touchstart', this.connect, false);
+		sendButton.addEventListener(TOUCH_START, this.readData, false);
     },
     onDeviceReady: function() {
         app.refreshDeviceList();
@@ -88,7 +89,7 @@ var app = {
     },
     connect: function(e) {
         var onConnect = function() {
-                // suscribirse para recibir datos
+                // subscribe for incoming data
                 bluetoothSerial.subscribe('\n', app.onData, app.onError);
 
                 resultDiv.innerHTML = "";
@@ -105,12 +106,8 @@ var app = {
     },
     onData: function(data) { // data received from Arduino
         console.log(data);
-        readDiv.innerHTML = readDiv.innerHTML + "Received: " + data + "<br/>";
-        readDiv.scrollTop = readDiv.scrollHeight;
-
-			bluetoothSerial.read(function (data) {
-			console.log(data);
-			}, failure);
+        resultDiv.innerHTML = resultDiv.innerHTML + "Received: " + data + "<br/>";
+        resultDiv.scrollTop = resultDiv.scrollHeight;
     },
     sendData: function(event) { // send data to Arduino
 
@@ -127,6 +124,19 @@ var app = {
         var data = messageInput.value;
         bluetoothSerial.write(data, success, failure);
     },
+	readData: function(event){
+		var success = function() {
+            console.log("success");
+            readDiv.innerHTML = readDiv.innerHTML + "CO: " + messageOutPut.value + "<br/>";
+            readDiv.scrollTop = rreadDiv.scrollHeight;
+        };
+		var failure = function() {
+            alert("Failed writing data to Bluetooth peripheral");
+        };
+		var readData = messageOutPut.value;
+		bluetoothSerial.read(readData,failure);
+	};
+
     disconnect: function(event) {
         bluetoothSerial.disconnect(app.showMainPage, app.onError);
     },
