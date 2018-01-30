@@ -130,8 +130,8 @@ var app = {
 
 		var Read = function(){
 			console.log("Read");
-			resultDiv.innerHTML = resultDiv.innerHTML + "CO: " + messageOutput.value + "<br/>";
-            resultDiv.scrollTop = resultDiv.scrollHeight;
+			readDiv.innerHTML = readDiv.innerHTML + "CO: " + messageOutput.value + "<br/>";
+            readDiv.scrollTop = readDiv.scrollHeight;
 		};
 
 		var failureR = function() {
