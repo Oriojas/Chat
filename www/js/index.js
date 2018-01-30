@@ -135,7 +135,7 @@ var app = {
         };
 		var readData = messageOutPut.value;
 		bluetoothSerial.read(readData,failure);
-	};
+	},
 
     disconnect: function(event) {
         bluetoothSerial.disconnect(app.showMainPage, app.onError);
