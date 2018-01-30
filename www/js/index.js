@@ -88,7 +88,7 @@ var app = {
     },
     connect: function(e) {
         var onConnect = function() {
-                // subscribe for incoming data
+                // suscribirse para recibir datos
                 bluetoothSerial.subscribe('\n', app.onData, app.onError);
 
                 resultDiv.innerHTML = "";
@@ -107,6 +107,10 @@ var app = {
         console.log(data);
         readDiv.innerHTML = readDiv.innerHTML + "Received: " + data + "<br/>";
         readDiv.scrollTop = readDiv.scrollHeight;
+
+			bluetoothSerial.read(function (data) {
+			console.log(data);
+			}, failure);
     },
     sendData: function(event) { // send data to Arduino
 
