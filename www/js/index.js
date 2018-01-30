@@ -128,7 +128,7 @@ var app = {
 		var success = function() {
             console.log("success");
             readDiv.innerHTML = readDiv.innerHTML + "CO: " + messageOutPut.value + "<br/>";
-            readDiv.scrollTop = rreadDiv.scrollHeight;
+            readDiv.scrollTop = readDiv.scrollHeight;
         };
 		var failure = function() {
             alert("Failed writing data to Bluetooth peripheral");
