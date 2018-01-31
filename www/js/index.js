@@ -34,7 +34,6 @@ var app = {
         sendButton.addEventListener(TOUCH_START, this.sendData, false);
         disconnectButton.addEventListener(TOUCH_START, this.disconnect, false);
         deviceList.addEventListener('touchstart', this.connect, false);
-		sendButton.addEventListener(TOUCH_START, this.readData, false);
     },
     onDeviceReady: function() {
         app.refreshDeviceList();
@@ -124,19 +123,6 @@ var app = {
         var data = messageInput.value;
         bluetoothSerial.write(data, success, failure);
     },
-	readData: function(readD){
-		var success = function() {
-            console.log("success");
-            readDiv.innerHTML = readDiv.innerHTML + "CO: " + messageOutPut.value + "<br/>";
-            readDiv.scrollTop = readDiv.scrollHeight;
-        };
-		var failure = function() {
-            alert("Failed writing data to Bluetooth peripheral");
-        };
-		var readD = messageOutPut.value;
-		bluetoothSerial.read(readD,failure);
-	},
-
     disconnect: function(event) {
         bluetoothSerial.disconnect(app.showMainPage, app.onError);
     },
